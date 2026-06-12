@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ProjectCard } from "@/components/work/ProjectCard";
 import { ProjectModal, type ProjectModalData } from "@/components/work/ProjectModal";
-import { experimentalProjects } from "@/data/experimental";
+import { experimentalProjects as staticExperimental } from "@/data/experimental";
 import type { ExperimentalProject } from "@/types";
+import { getExperimentalProjects } from "@/lib/db-client";
 
 // ═══════════════════════════════════════════════════════════════════════
 // EXPERIMENTAL GALLERY — looser, off-grid layout for passion projects.
@@ -21,6 +22,7 @@ function toModalData(p: ExperimentalProject): ProjectModalData {
     cover: p.cover,
     videoUrl: p.videoUrl || undefined,
     stills: p.stills,
+    href: p.externalUrl || undefined,
   };
 }
 
@@ -34,11 +36,18 @@ const layout = [
 
 export function ExperimentalGallery() {
   const [active, setActive] = useState<ProjectModalData | null>(null);
+  const [projectsList, setProjectsList] = useState<ExperimentalProject[]>(staticExperimental);
+
+  useEffect(() => {
+    getExperimentalProjects().then((data) => {
+      setProjectsList(data);
+    });
+  }, []);
 
   return (
     <div className="frame pb-32">
       <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-12">
-        {experimentalProjects.map((p, i) => {
+        {projectsList.map((p, i) => {
           const l = layout[i % layout.length];
           return (
             <div key={p.slug} className={`${l.span} ${l.offset}`}>

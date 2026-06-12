@@ -1,7 +1,12 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { LogoWall } from "@/components/LogoWall";
-import { homepageLogos } from "@/data/clients";
+import { homepageLogos as staticLogos } from "@/data/clients";
+import type { Logo } from "@/types";
+import { getClientsAndAgencies } from "@/lib/db-client";
 
 // ═══════════════════════════════════════════════════════════════════════
 // HOME — minimal client/agency logo strip. Grayscale, color on hover.
@@ -9,6 +14,16 @@ import { homepageLogos } from "@/data/clients";
 // ═══════════════════════════════════════════════════════════════════════
 
 export function ClientStrip() {
+  const [logos, setLogos] = useState<Logo[]>(staticLogos);
+
+  useEffect(() => {
+    getClientsAndAgencies().then((data) => {
+      if (data.homepageLogos && data.homepageLogos.length > 0) {
+        setLogos(data.homepageLogos);
+      }
+    });
+  }, []);
+
   return (
     <section className="frame py-24 sm:py-28">
       <Reveal>
@@ -17,7 +32,7 @@ export function ClientStrip() {
         </p>
       </Reveal>
       <Reveal delay={0.05}>
-        <LogoWall logos={homepageLogos} variant="strip" />
+        <LogoWall logos={logos} variant="strip" />
       </Reveal>
       <Reveal delay={0.1}>
         <div className="mt-12 text-center">

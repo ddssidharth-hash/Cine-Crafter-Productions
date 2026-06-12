@@ -3,12 +3,14 @@ import type { Project, ProjectCategory } from "@/types";
 // ═══════════════════════════════════════════════════════════════════════
 // PORTFOLIO PROJECTS — data-driven. Add a new project by appending an object
 // to this array; the grid, filters, detail view and homepage "Featured Work"
-// all read from here. No layout code needs to change.
+// all read from here.
 //
-// TODO: Replace every cover/video/still URL with real, optimized assets
-//       (WebP/AVIF stills, compressed MP4/WebM previews). The Unsplash URLs
-//       below are temporary visual placeholders only.
-// TODO: Replace all copy, client credits and roles with real details.
+// Content is drawn from Sidharth Menon's real credits. The `externalUrl`
+// fields link to live Behance galleries.
+//
+// TODO: Replace placeholder cover images with real stills/frames from each
+//       project (WebP/AVIF). Add `videoUrl` (YouTube/Vimeo/MP4) and
+//       `previewUrl` (muted loop) per project as footage becomes available.
 // ═══════════════════════════════════════════════════════════════════════
 
 /** Canonical, ordered list of categories — drives the filter bar. */
@@ -22,124 +24,148 @@ export const projectCategories: ProjectCategory[] = [
   "Digital Marketing Videos",
 ];
 
-// Temporary placeholder cover images (cinematic stills) — swap for real work.
+// Temporary placeholder cover images — swap for real frames.
 const ph = (id: string) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600&q=70`;
 
 export const projects: Project[] = [
   {
-    slug: "the-quiet-coast",
-    title: "The Quiet Coast",
-    category: "Film Production",
-    excerpt: "A feature-length meditation on memory and the sea.",
+    slug: "isha-foundation",
+    title: "Isha Foundation",
+    category: "Digital Marketing Videos",
+    excerpt: "250+ films carrying Sadhguru's global causes to millions.",
     description:
-      "A feature collaboration shot across three coastlines over a single winter. We led production end-to-end — from development and crewing to a hand-finished color grade — building a restrained visual language that lets performance and landscape carry the story.",
-    role: "Production · Direction · Edit · Color",
-    client: "Atlas Pictures", // TODO: real client
+      "As Creative Director heading the video department, leading the films behind Isha's major campaigns — Save Soil, Rally for Rivers, Cauvery Calling, COP28, G20, Insight, Isha Leadership Academy and more — work that has helped grow the foundation's reach to over 11 million followers worldwide.",
+    role: "Creative Director · Director / Writer",
+    client: "Isha Foundation",
     year: 2024,
-    cover: ph("photo-1485846234645-a62644f84728"),
-    videoUrl: "", // TODO: embed URL (YouTube/Vimeo) or self-hosted mp4
-    previewUrl: "", // TODO: muted loop preview for card hover
-    featured: true,
-    stills: [
-      { src: ph("photo-1500530855697-b586d89ba3ee"), alt: "Coastal dawn, wide" },
-      { src: ph("photo-1469474968028-56623f02e42e"), alt: "Lighthouse at dusk" },
-    ],
-  },
-  {
-    slug: "northwind-campaign",
-    title: "Northwind",
-    category: "Ad Films",
-    excerpt: "A 60-second brand film for a heritage outerwear label.",
-    description:
-      "A flagship campaign film built around a single uninterrupted journey through weather and terrain. Delivered as a hero 60, plus a suite of social cut-downs and stills — all from one tightly choreographed shoot day.",
-    role: "Direction · Edit · Color · Finishing",
-    client: "Northwind Apparel · via Meridian Agency", // TODO: real credit
-    year: 2024,
-    cover: ph("photo-1483728642387-6c3bdd6c93e5"),
-    featured: true,
-    stills: [{ src: ph("photo-1454496522488-7a8e488e8606"), alt: "Mountain ridge" }],
-  },
-  {
-    slug: "city-of-makers",
-    title: "City of Makers",
-    category: "Documentaries",
-    excerpt: "A six-part documentary portrait of an artisan district.",
-    description:
-      "An intimate documentary series following the last working craftspeople of a historic quarter. We embedded with subjects over four months, prioritising trust and observation over spectacle.",
-    role: "Production · Cinematography · Edit",
-    client: "Public Broadcast Trust", // TODO: real client
-    year: 2023,
-    cover: ph("photo-1492691527719-9d1e07e534b4"),
+    cover: ph("photo-1542204165-65bf26472b9b"),
+    externalUrl: "https://www.behance.net/gallery/189059961/Isha-Foundation",
     featured: true,
     stills: [],
   },
   {
-    slug: "halcyon-series",
-    title: "Halcyon",
+    slug: "survivor-tamil",
+    title: "Survivor (Zee Tamil)",
     category: "Web Series",
-    excerpt: "An eight-episode dramatic web series for streaming.",
+    excerpt: "Senior producing & direction on a flagship reality series.",
     description:
-      "A character-driven web series developed for a digital-first audience. We handled line production and post across all eight episodes, keeping a feature-grade look on a streaming-series schedule.",
-    role: "Line Production · Post Supervision · Color",
-    client: "Streamline Originals", // TODO: real client
-    year: 2023,
+      "Senior Program Producer and Director on the Tamil edition of the global reality format Survivor — large-scale, location-based production demanding precise scheduling, logistics and on-the-fly direction across a demanding shoot.",
+    role: "Senior Program Producer / Director",
+    client: "Banijay Asia · Zee Tamil",
+    year: 2021,
+    cover: ph("photo-1500530855697-b586d89ba3ee"),
+    featured: true,
+    stills: [],
+  },
+  {
+    slug: "smaranayil",
+    title: "Smaranayil",
+    category: "Filmmaking",
+    excerpt: "Original concept and screenplay for a feature.",
+    description:
+      "Concept, story and screenplay as Creative Director and writer — a film developed in collaboration with Joy Movie Productions, showcasing the studio's authorial voice from the page through to direction.",
+    role: "Creative Director / Scriptwriter",
+    client: "Joy Movie Productions",
+    year: 2022,
+    cover: ph("photo-1485846234645-a62644f84728"),
+    featured: true,
+    stills: [],
+  },
+  {
+    slug: "puncch-beat",
+    title: "Puncch Beat",
+    category: "Web Series",
+    excerpt: "1st AD on a hit youth drama for ALT Balaji.",
+    description:
+      "First Assistant Director on the popular youth drama for ALT Balaji — coordinating cast, crew and a complex shooting schedule to keep an ambitious episodic production on track.",
+    role: "1st Assistant Director",
+    client: "ALT Balaji",
+    year: 2019,
     cover: ph("photo-1536440136628-849c177e76a1"),
     featured: true,
     stills: [],
   },
   {
-    slug: "meridian-launch",
-    title: "Meridian Launch",
-    category: "Digital Marketing Videos",
-    excerpt: "A product launch suite for a fintech platform.",
+    slug: "cartel",
+    title: "Cartel",
+    category: "Web Series",
+    excerpt: "1st AD on a crime drama for ALT Balaji / MX Player.",
     description:
-      "A modular suite of launch and lifecycle videos — explainer, testimonial, and performance cut-downs — designed to flex across paid, organic and product surfaces while holding one premium tone.",
-    role: "Concept · Direction · Edit · Motion",
-    client: "Meridian", // TODO: real client
-    year: 2024,
-    cover: ph("photo-1460925895917-afdab827c52f"),
-    featured: true,
+      "First Assistant Director on the crime drama series for ALT Balaji and MX Player — managing on-set logistics and continuity across a large ensemble production.",
+    role: "1st Assistant Director",
+    client: "ALT Balaji · MX Player",
+    year: 2021,
+    cover: ph("photo-1517604931442-7e0c8ed2963c"),
     stills: [],
   },
   {
-    slug: "the-long-field",
-    title: "The Long Field",
-    category: "Filmmaking",
-    excerpt: "A short film exploring inheritance and land.",
+    slug: "gumrah-s3",
+    title: "Gumrah — Season 3",
+    category: "Web Series",
+    excerpt: "Creative Head on the Channel V crime anthology.",
     description:
-      "A self-initiated short developed and directed in-house, later acquired for festival distribution. A showcase of the studio's authorial voice and craft from script through final grade.",
-    role: "Writing · Direction · Edit · Color",
-    client: "CineCrafter Productions",
-    year: 2022,
-    cover: ph("photo-1470071459604-3b5ec3a7fe05"),
-    featured: true,
+      "Creative Head on Season 3 of the Channel V crime anthology (Balaji Telefilms) — shaping stories, scripts and the look of the series across the season.",
+    role: "Creative Head",
+    client: "Balaji Telefilms · Channel V",
+    year: 2016,
+    cover: ph("photo-1478720568477-152d9b164e26"),
     stills: [],
   },
   {
-    slug: "harbour-lines",
-    title: "Harbour Lines",
-    category: "Line Production",
-    excerpt: "Local line production for an international shoot.",
+    slug: "anjaan",
+    title: "Anjaan",
+    category: "Documentaries",
+    excerpt: "Creative Head on a mystery non-fiction series.",
     description:
-      "Full line-production services for an overseas production company shooting on location — crewing, permits, logistics, and equipment, delivered to international standards on a compressed timeline.",
-    role: "Line Production · Local Crew · Logistics",
-    client: "Confidential (intl. production co.)", // TODO: real client
-    year: 2023,
-    cover: ph("photo-1502920917128-1aa500764cbd"),
+      "Creative Head on the series Anjaan for Discovery Jeet (Lotus Talkies) — bringing a documentary sensibility and strong narrative structure to real, unexplained stories.",
+    role: "Creative Head",
+    client: "Lotus Talkies · Discovery Jeet",
+    year: 2018,
+    cover: ph("photo-1492691527719-9d1e07e534b4"),
     stills: [],
   },
   {
-    slug: "evergreen-spot",
-    title: "Evergreen",
+    slug: "corporate-ads",
+    title: "Corporate Films",
     category: "Ad Films",
-    excerpt: "A seasonal spot for a home & lifestyle brand.",
+    excerpt: "Brand and corporate films for 100+ brands.",
     description:
-      "A warm, tactile seasonal campaign built on practical light and real interiors. Delivered as broadcast and social cuts with a bespoke color treatment.",
-    role: "Direction · Edit · Color",
-    client: "Evergreen Home · via Field & Co.", // TODO: real credit
+      "A body of corporate and brand films created for clients including ASUS (ROG), Conscious Planet, Dr Joy Med Store, Mountire and many more — concept through to final grade.",
+    role: "Director · Writer · Editor",
+    client: "Various brands",
+    year: 2023,
+    cover: ph("photo-1460925895917-afdab827c52f"),
+    externalUrl: "https://www.behance.net/gallery/189061373/Corporate-Ads",
+    featured: true,
+    stills: [],
+  },
+  {
+    slug: "advertisements",
+    title: "Advertisements",
+    category: "Ad Films",
+    excerpt: "Commercial spots across products and categories.",
+    description:
+      "A reel of advertising work spanning products and categories — crafted to make brands feel cinematic rather than promotional.",
+    role: "Director · Editor",
+    client: "Various brands",
+    year: 2023,
+    cover: ph("photo-1483728642387-6c3bdd6c93e5"),
+    externalUrl: "https://www.behance.net/gallery/195559753/Advertisements",
+    stills: [],
+  },
+  {
+    slug: "music-videos",
+    title: "Music Videos",
+    category: "Filmmaking",
+    excerpt: "Performance and narrative music films.",
+    description:
+      "A selection of music videos — performance-led and narrative — directed and finished with a distinct visual signature.",
+    role: "Director · Editor",
+    client: "Independent artists",
     year: 2022,
-    cover: ph("photo-1513519245088-0e12902e35ca"),
+    cover: ph("photo-1492571350019-22de08371fd3"),
+    externalUrl: "https://www.behance.net/gallery/189061121/Music-Video",
     stills: [],
   },
 ];

@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { siteConfig } from "@/site-config";
-import { services } from "@/data/services";
+import { services as staticServices } from "@/data/services";
 import { easeCine } from "@/lib/motion";
+import { getServices } from "@/lib/db-client";
+import type { Service } from "@/types";
 
 // ═══════════════════════════════════════════════════════════════════════
 // CONTACT FORM — "Work With Us" inquiry form with a confirmation state.
@@ -28,6 +30,13 @@ export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
   const [revealed, setRevealed] = useState<RevealedContact | null>(null);
+  const [servicesList, setServicesList] = useState<Service[]>(staticServices);
+
+  useEffect(() => {
+    getServices().then((data) => {
+      setServicesList(data);
+    });
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -163,7 +172,7 @@ export function ContactForm() {
             <option value="" disabled>
               Select a service
             </option>
-            {services.map((s) => (
+            {servicesList.map((s) => (
               <option key={s.id} value={s.title} className="bg-base text-ink">
                 {s.title}
               </option>

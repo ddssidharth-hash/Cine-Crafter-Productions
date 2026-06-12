@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ProjectCard } from "@/components/work/ProjectCard";
 import { ProjectModal, type ProjectModalData } from "@/components/work/ProjectModal";
-import { projects, projectCategories } from "@/data/projects";
+import { projects as staticProjects, projectCategories } from "@/data/projects";
 import type { Project, ProjectCategory } from "@/types";
 import { easeCine } from "@/lib/motion";
+import { getProjects } from "@/lib/db-client";
 
 // ═══════════════════════════════════════════════════════════════════════
 // WORK GALLERY — filterable grid for the Past Work / Portfolio page.
@@ -26,6 +27,7 @@ function toModalData(p: Project): ProjectModalData {
     cover: p.cover,
     videoUrl: p.videoUrl || undefined,
     stills: p.stills,
+    href: p.externalUrl || undefined,
   };
 }
 
@@ -33,12 +35,19 @@ export function WorkGallery() {
   const reduce = useReducedMotion();
   const [filter, setFilter] = useState<Filter>("All");
   const [active, setActive] = useState<ProjectModalData | null>(null);
+  const [projectsList, setProjectsList] = useState<Project[]>(staticProjects);
+
+  useEffect(() => {
+    getProjects().then((data) => {
+      setProjectsList(data);
+    });
+  }, []);
 
   const filters: Filter[] = ["All", ...projectCategories];
 
   const visible = useMemo(
-    () => (filter === "All" ? projects : projects.filter((p) => p.category === filter)),
-    [filter],
+    () => (filter === "All" ? projectsList : projectsList.filter((p) => p.category === filter)),
+    [filter, projectsList],
   );
 
   return (

@@ -2,32 +2,47 @@ import type { Logo } from "@/types";
 
 // ═══════════════════════════════════════════════════════════════════════
 // CLIENTS & AGENCIES — drives the homepage logo strip and the Clients page.
-// Two distinct lists so the Clients page can render them as separate sections.
+// Two lists: brands/networks the studio has worked with, and the production
+// houses / studios it has collaborated with.
 //
-// TODO: Replace placeholder names with real clients/agencies, and add real
-//       logo assets (monochrome SVG/PNG) at `src`. When `src` is omitted the
-//       UI falls back to a refined wordmark of the `name`.
+// Drawn from Sidharth's real credits and brand work.
+//
+// TODO: Add real logo assets (monochrome SVG/PNG) at `src` for each entry.
+//       When `src` is omitted the UI falls back to a refined wordmark.
 // ═══════════════════════════════════════════════════════════════════════
 
+// Brands, foundations & broadcast networks.
 export const clients: Logo[] = [
-  { name: "Atlas Pictures" },
-  { name: "Northwind Apparel" },
-  { name: "Meridian" },
-  { name: "Streamline Originals" },
-  { name: "Evergreen Home" },
-  { name: "Public Broadcast Trust" },
-  { name: "Halcyon Studios" },
-  { name: "Lumen Group" },
+  { name: "Isha Foundation" },
+  { name: "Sun Network" },
+  { name: "MTV" },
+  { name: "Channel V" },
+  { name: "Zee Tamil" },
+  { name: "Discovery Jeet" },
+  { name: "MX Player" },
+  { name: "ASUS ROG" },
+  { name: "Conscious Planet" },
+  { name: "Dr Joy Med Store" },
+  { name: "Mountire" },
 ];
 
+// Production houses & studios collaborated with.
 export const agencies: Logo[] = [
-  { name: "Meridian Agency" },
-  { name: "Field & Co." },
-  { name: "The Forge" },
-  { name: "Brightline" },
-  { name: "North & Park" },
-  { name: "Studio Vera" },
+  { name: "Balaji Telefilms" },
+  { name: "ALT Balaji" },
+  { name: "Banijay Asia" },
+  { name: "Joy Movie Productions" },
+  { name: "Lotus Talkies" },
+  { name: "Cryptic Intel" },
+  { name: "Honeycomb Creative" },
 ];
 
-/** Combined, de-duplicated set for the minimal homepage strip. */
-export const homepageLogos: Logo[] = [...clients.slice(0, 6)];
+/** Combined set for the minimal homepage strip. */
+export const homepageLogos: Logo[] = [
+  { name: "Isha Foundation" },
+  { name: "Balaji Telefilms" },
+  { name: "ALT Balaji" },
+  { name: "Banijay Asia" },
+  { name: "MTV" },
+  { name: "Sun Network" },
+];

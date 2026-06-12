@@ -25,7 +25,7 @@ export const services: Service[] = [
       "Post & finishing",
     ],
     image: ph("photo-1485846234645-a62644f84728"),
-    exampleProjectSlug: "the-quiet-coast",
+    exampleProjectSlug: "smaranayil",
   },
   {
     id: "line-production",
@@ -35,7 +35,7 @@ export const services: Service[] = [
       "For producers shooting on our turf, we handle the ground game — budgets, permits, crew, equipment and logistics — delivering to international standards while protecting your schedule and your numbers.",
     capabilities: ["Budgeting & scheduling", "Permits & compliance", "Local crew & kit", "Logistics"],
     image: ph("photo-1502920917128-1aa500764cbd"),
-    exampleProjectSlug: "harbour-lines",
+    exampleProjectSlug: "survivor-tamil",
   },
   {
     id: "filmmaking",
@@ -45,7 +45,7 @@ export const services: Service[] = [
       "Our craft practice — writing, directing and cutting original work. It is where our voice is sharpest, and where clients see exactly how we think about story, performance and image.",
     capabilities: ["Writing & development", "Direction", "Cinematography", "Edit & color"],
     image: ph("photo-1470071459604-3b5ec3a7fe05"),
-    exampleProjectSlug: "the-long-field",
+    exampleProjectSlug: "music-videos",
   },
   {
     id: "web-series",
@@ -55,7 +55,7 @@ export const services: Service[] = [
       "We develop and produce episodic series that hold a feature-grade look on a streaming schedule — from writers' room support through to a consistent post pipeline across every episode.",
     capabilities: ["Episodic development", "Multi-episode scheduling", "Post supervision", "Consistent grade"],
     image: ph("photo-1536440136628-849c177e76a1"),
-    exampleProjectSlug: "halcyon-series",
+    exampleProjectSlug: "puncch-beat",
   },
   {
     id: "ad-films",
@@ -65,7 +65,7 @@ export const services: Service[] = [
       "Hero films and the full social ecosystem around them — concept, direction, edit and grade — built to make brands feel like cinema rather than advertising.",
     capabilities: ["Concept & treatment", "Direction", "Edit & motion", "Color & finishing"],
     image: ph("photo-1483728642387-6c3bdd6c93e5"),
-    exampleProjectSlug: "northwind-campaign",
+    exampleProjectSlug: "advertisements",
   },
   {
     id: "documentaries",
@@ -75,7 +75,7 @@ export const services: Service[] = [
       "Observational, character-led documentary work — built on access, patience and trust. We tell true stories without sensationalising them.",
     capabilities: ["Research & access", "Field production", "Verité cinematography", "Story-led edit"],
     image: ph("photo-1492691527719-9d1e07e534b4"),
-    exampleProjectSlug: "city-of-makers",
+    exampleProjectSlug: "anjaan",
   },
   {
     id: "digital-marketing-videos",
@@ -85,6 +85,6 @@ export const services: Service[] = [
       "Modular video suites engineered for paid and organic channels — explainers, testimonials and cut-downs that flex across surfaces without ever looking cheap.",
     capabilities: ["Channel strategy", "Modular production", "Versioning & cut-downs", "Motion graphics"],
     image: ph("photo-1460925895917-afdab827c52f"),
-    exampleProjectSlug: "meridian-launch",
+    exampleProjectSlug: "isha-foundation",
   },
 ];

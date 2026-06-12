@@ -1,8 +1,12 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState, useEffect } from "react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { LogoWall } from "@/components/LogoWall";
-import { clients, agencies } from "@/data/clients";
+import { clients as staticClients, agencies as staticAgencies } from "@/data/clients";
+import type { Logo } from "@/types";
+import { getClientsAndAgencies } from "@/lib/db-client";
 
 // ═══════════════════════════════════════════════════════════════════════
 // CLIENTS & AGENCIES PAGE — two clearly separated, understated sections.
@@ -10,13 +14,17 @@ import { clients, agencies } from "@/data/clients";
 // data/clients.ts.
 // ═══════════════════════════════════════════════════════════════════════
 
-export const metadata: Metadata = {
-  title: "Clients & Agencies",
-  description:
-    "The brands, producers and agencies CineCrafter Productions has been trusted to work with.",
-};
-
 export default function ClientsPage() {
+  const [clientsList, setClientsList] = useState<Logo[]>(staticClients);
+  const [agenciesList, setAgenciesList] = useState<Logo[]>(staticAgencies);
+
+  useEffect(() => {
+    getClientsAndAgencies().then((data) => {
+      if (data.clients) setClientsList(data.clients);
+      if (data.agencies) setAgenciesList(data.agencies);
+    });
+  }, []);
+
   return (
     <>
       <PageHeader
@@ -33,18 +41,18 @@ export default function ClientsPage() {
             </h2>
           </Reveal>
           <Reveal delay={0.05}>
-            <LogoWall logos={clients} />
+            <LogoWall logos={clientsList} />
           </Reveal>
         </section>
 
         <section>
           <Reveal>
             <h2 className="mb-10 font-serif text-2xl text-ink sm:text-3xl">
-              Agencies we&rsquo;ve collaborated with
+              Production houses we&rsquo;ve collaborated with
             </h2>
           </Reveal>
           <Reveal delay={0.05}>
-            <LogoWall logos={agencies} />
+            <LogoWall logos={agenciesList} />
           </Reveal>
         </section>
       </div>

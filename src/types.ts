@@ -45,6 +45,8 @@ export interface Project {
   previewUrl?: string;
   /** Gallery stills shown in the detail view. */
   stills?: MediaStill[];
+  /** Optional external link (e.g. a Behance gallery) for "view full project". */
+  externalUrl?: string;
   /** Surface this project in homepage "Featured Work". */
   featured?: boolean;
 }
@@ -62,6 +64,8 @@ export interface ExperimentalProject {
   videoUrl?: string;
   previewUrl?: string;
   stills?: MediaStill[];
+  /** Optional external link (e.g. a Behance gallery) for "view full project". */
+  externalUrl?: string;
 }
 
 /** A service offering shown on the Services page. */

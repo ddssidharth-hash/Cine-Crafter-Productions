@@ -38,19 +38,20 @@ export const siteConfig = {
 
     // Publicly shown, always — safe to ship to the client.
     general: {
-      email: "hello@cinecrafter.example", // TODO: real general inbox
-      location: "Mumbai · London · Remote worldwide", // TODO: real location(s)
+      email: "dds.sidharth@gmail.com",
+      location: "Bangalore, India · Available worldwide",
       hours: "Mon–Fri, 10:00–18:00 IST",
     },
   },
 
   // ─── Social links ────────────────────────────────────────────────────
-  // TODO: Replace placeholder URLs with the studio's real profiles.
   social: [
-    { label: "Instagram", href: "https://instagram.com/" },
-    { label: "LinkedIn", href: "https://linkedin.com/" },
-    { label: "IMDb", href: "https://imdb.com/" },
-    { label: "YouTube", href: "https://youtube.com/" },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/sidharth-menon-047b81141",
+    },
+    { label: "Behance", href: "https://www.behance.net/sidharthmenon7" },
+    // TODO: add Instagram / YouTube / IMDb profiles here when available.
   ],
 
   // ─── Budget ranges offered in the inquiry form dropdown ───────────────

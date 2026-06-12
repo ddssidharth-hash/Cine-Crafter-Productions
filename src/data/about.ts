@@ -1,52 +1,106 @@
 // ═══════════════════════════════════════════════════════════════════════
-// ABOUT PAGE CONTENT — structured bits (stats, process, credentials, awards).
+// ABOUT PAGE CONTENT — structured bits (stats, founder, career, tools).
 // Narrative prose lives in the page itself. Edit freely.
 //
-// TODO: Replace all of this with the founder's real bio, credits, awards and
-//       the studio's true numbers.
+// Sourced from Sidharth Menon's profile. Update as the studio's work grows.
 // ═══════════════════════════════════════════════════════════════════════
 
 export const aboutStats = [
-  { value: "10+", label: "Years in the industry" },
-  { value: "120+", label: "Projects delivered" },
-  { value: "4", label: "Continents shot on" },
-  { value: "30+", label: "Brands & agencies" },
+  { value: "12+", label: "Years in filmmaking" },
+  { value: "250+", label: "Films delivered for Isha Foundation" },
+  { value: "11M+", label: "Audience reached on social" },
+  { value: "100+", label: "Brands & productions" },
 ];
 
+// Studio working method.
 export const process = [
   {
     title: "Listen",
-    copy: "Every project starts with understanding — the story, the audience, the constraints. No templates.",
+    copy: "Every project starts with research and understanding — the story, the people, the intent. No templates.",
   },
   {
     title: "Develop",
-    copy: "We shape concept, treatment and plan together, so there are no surprises once cameras roll.",
+    copy: "We shape concept, script and plan together, so the vision is clear long before a camera rolls.",
   },
   {
     title: "Produce",
-    copy: "A lean, senior crew executes with precision. Fewer people, more craft, full accountability.",
+    copy: "A lean, senior crew executes with precision — managing budget, schedule, crew and locations end to end.",
   },
   {
     title: "Finish",
-    copy: "Edit, color and sound are handled in-house, where the film is truly made — not rushed at the end.",
+    copy: "Edit, color and sound are crafted in-house, where the film is truly made — not rushed at the end.",
   },
 ];
 
-// Founder / lead credentials. TODO: real name, roles, credits.
+// Founder / lead.
 export const founder = {
-  name: "[Founder Name]", // TODO: real name
-  role: "Founder · Director · Editor · Colorist",
+  name: "Sidharth Menon",
+  role: "Founder · Writer / Director · Creative Director",
   bio: [
-    "Over a decade behind the camera and the edit, with credits spanning feature films, national ad campaigns and award-shortlisted documentaries.",
-    "A rare combination of director, editor, VFX artist and colorist — which means the vision that's promised in development is the one that survives to the final master.",
-    "An early and serious practitioner of AI-driven video, building generative techniques into a traditional craft pipeline rather than treating them as a gimmick.",
+    "A storyteller at heart with over twelve years behind the camera and the edit, Sidharth has spent his career turning extensive research into narratives that come to life on screen. He began as an assistant director and, through relentless dedication, grew into a seasoned writer and director — and the founder of CineCrafter Productions.",
+    "His work spans esteemed production houses and networks — Balaji Telefilms, ALT Balaji, MTV, Sun Network, Channel V, Zee Tamil, Banijay Asia and Joy Movie Productions among them — across web series, reality television, advertising and four South Indian films. Today he is Creative Director at the Isha Foundation, where he heads the video department and has made over 250 films carrying Sadhguru's causes to a global audience.",
+    "Beyond the studio he is an explorer and intense traveller — cycling the Western Ghats solo in search of endemic tribes, living with the Maasai of East Africa, and summiting Mount Kilimanjaro. His dream lies in documentary filmmaking, with an aspiration to bring stories from around the globe to platforms like National Geographic.",
   ],
 };
 
-// TODO: replace with real awards / recognitions.
-export const recognitions = [
-  "Official Selection — [Film Festival], 2024",
-  "Finalist — [Advertising Award], 2023",
-  "Best Cinematography — [Festival], 2022",
-  "Shortlisted — [Documentary Prize], 2021",
+// Career timeline — most recent first.
+export const experience = [
+  {
+    period: "2022 — Present",
+    org: "Isha Foundation",
+    role: "Creative Director — Video Department · Director / Writer",
+    detail:
+      "Heading the video team; 250+ films across Save Soil, Rally for Rivers, Cauvery Calling, COP28, G20, Insight and more.",
+  },
+  {
+    period: "2021 — 2023",
+    org: "Joy Movie Productions",
+    role: "Creative Director / Scriptwriter",
+    detail: "Concept and script for the film Smaranayil.",
+  },
+  {
+    period: "2021",
+    org: "Banijay Asia",
+    role: "Senior Program Producer / Director",
+    detail: "Survivor (Zee Tamil).",
+  },
+  {
+    period: "2017 — 2018",
+    org: "Lotus Talkies",
+    role: "Creative Head",
+    detail: "Anjaan (Discovery Jeet).",
+  },
+  {
+    period: "2014 — 2017",
+    org: "Cryptic Intel · Honeycomb Creative",
+    role: "Creative Director",
+    detail: "Branded and digital content across multiple campaigns.",
+  },
+  {
+    period: "2013 — 2020",
+    org: "Balaji Telefilms / ALT Balaji (freelance)",
+    role: "Creative Head · 1st Assistant Director",
+    detail:
+      "Gumrah S3 (Channel V), Ek Thi Naayika, Webbed (MTV), Puncch Beat & Cartel (ALT Balaji / MX Player).",
+  },
+  {
+    period: "2012",
+    org: "Sun Network",
+    role: "Promo Producer / Director",
+    detail: "On-air promos and channel packaging.",
+  },
 ];
+
+// Tooling — industry-standard software.
+export const tools = [
+  "Adobe Premiere Pro",
+  "DaVinci Resolve",
+  "Final Cut Pro",
+  "Adobe After Effects",
+  "Adobe Photoshop",
+  "Adobe Audition",
+  "Final Draft",
+];
+
+// Languages.
+export const languages = ["Tamil", "English", "Malayalam", "Hindi"];

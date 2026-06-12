@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { ProjectCard } from "@/components/work/ProjectCard";
 import { ProjectModal, type ProjectModalData } from "@/components/work/ProjectModal";
-import { featuredProjects } from "@/data/projects";
+import { featuredProjects as staticFeatured } from "@/data/projects";
 import type { Project } from "@/types";
+import { getProjects } from "@/lib/db-client";
 
 // ═══════════════════════════════════════════════════════════════════════
 // HOME — Featured Work. Horizontally scrollable strip of highlighted projects
@@ -25,11 +26,19 @@ function toModalData(p: Project): ProjectModalData {
     cover: p.cover,
     videoUrl: p.videoUrl || undefined,
     stills: p.stills,
+    href: p.externalUrl || undefined,
   };
 }
 
 export function FeaturedWork() {
   const [active, setActive] = useState<ProjectModalData | null>(null);
+  const [featuredList, setFeaturedList] = useState<Project[]>(staticFeatured);
+
+  useEffect(() => {
+    getProjects().then((data) => {
+      setFeaturedList(data.filter((p) => p.featured));
+    });
+  }, []);
 
   return (
     <section className="border-b border-base-line py-28 sm:py-36">
@@ -51,7 +60,7 @@ export function FeaturedWork() {
 
       {/* Horizontal snap strip. Edge padding matches the frame gutters. */}
       <div className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-4 sm:px-10 lg:px-16">
-        {featuredProjects.map((p) => (
+        {featuredList.map((p) => (
           <div
             key={p.slug}
             className="w-[78vw] shrink-0 snap-start sm:w-[44vw] lg:w-[30vw] xl:w-[24rem]"

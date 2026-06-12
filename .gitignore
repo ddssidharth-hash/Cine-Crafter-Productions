@@ -33,3 +33,7 @@ next-env.d.ts
 
 # original source logo drop (keep out of repo; clean copy lives in /public)
 logo-source-original.jpg
+
+# personal source material (not for the public repo)
+Sidharth - Profile & Work_compressed.pdf
+scripts/_extract_resume.py

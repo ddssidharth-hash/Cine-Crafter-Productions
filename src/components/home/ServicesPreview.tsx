@@ -1,6 +1,11 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
-import { services } from "@/data/services";
+import { services as staticServices } from "@/data/services";
+import type { Service } from "@/types";
+import { getServices } from "@/lib/db-client";
 
 // ═══════════════════════════════════════════════════════════════════════
 // HOME — "What We Do" teaser. A restrained list of services with a link to
@@ -8,6 +13,14 @@ import { services } from "@/data/services";
 // ═══════════════════════════════════════════════════════════════════════
 
 export function ServicesPreview() {
+  const [servicesList, setServicesList] = useState<Service[]>(staticServices);
+
+  useEffect(() => {
+    getServices().then((data) => {
+      setServicesList(data);
+    });
+  }, []);
+
   return (
     <section className="frame border-b border-base-line py-28 sm:py-36">
       <div className="mb-16 flex items-end justify-between gap-6">
@@ -29,7 +42,7 @@ export function ServicesPreview() {
       </div>
 
       <ul className="border-t border-base-line">
-        {services.map((s, i) => (
+        {servicesList.map((s, i) => (
           <Reveal as="li" key={s.id} delay={i * 0.04} y={12}>
             <Link
               href={`/services#${s.id}`}

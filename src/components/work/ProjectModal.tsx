@@ -129,11 +129,21 @@ export function ProjectModal({ data, onClose }: ProjectModalProps) {
                 <p className="mt-6 text-lg leading-relaxed text-ink-muted">
                   {data.description}
                 </p>
-                {data.href && (
-                  <Link href={data.href} className="link-underline mt-8 inline-flex">
-                    View full project <span className="ml-2">&rarr;</span>
-                  </Link>
-                )}
+                {data.href &&
+                  (/^https?:/.test(data.href) ? (
+                    <a
+                      href={data.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-underline mt-8 inline-flex"
+                    >
+                      View full project <span className="ml-2">&#8599;</span>
+                    </a>
+                  ) : (
+                    <Link href={data.href} className="link-underline mt-8 inline-flex">
+                      View full project <span className="ml-2">&rarr;</span>
+                    </Link>
+                  ))}
               </div>
 
               <dl className="space-y-6 md:col-span-5">

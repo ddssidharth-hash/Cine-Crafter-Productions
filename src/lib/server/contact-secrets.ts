@@ -12,9 +12,9 @@ import "server-only";
 // ═══════════════════════════════════════════════════════════════════════
 
 export const directContact = {
-  phone: process.env.DIRECT_PHONE ?? "+00 00000 00000", // TODO: real direct line
-  whatsapp: process.env.DIRECT_WHATSAPP ?? "+00 00000 00000", // TODO: real WhatsApp
-  email: process.env.DIRECT_EMAIL ?? "founder@cinecrafter.example", // TODO: real direct email
+  phone: process.env.DIRECT_PHONE ?? "+91 8870 059141",
+  whatsapp: process.env.DIRECT_WHATSAPP ?? "+91 8870 059141",
+  email: process.env.DIRECT_EMAIL ?? "dds.sidharth@gmail.com",
 };
 
 export type DirectContact = typeof directContact;

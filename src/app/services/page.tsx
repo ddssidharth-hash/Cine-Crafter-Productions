@@ -1,10 +1,14 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { services } from "@/data/services";
-import { getProjectBySlug } from "@/data/projects";
+import { services as staticServices } from "@/data/services";
+import { projects as staticProjects } from "@/data/projects";
+import type { Service, Project } from "@/types";
+import { getServices, getProjects } from "@/lib/db-client";
 
 // ═══════════════════════════════════════════════════════════════════════
 // SERVICES PAGE ("What We Do") — clean editorial sections, one per service,
@@ -12,13 +16,23 @@ import { getProjectBySlug } from "@/data/projects";
 // and an optional linked example project. Content from data/services.ts.
 // ═══════════════════════════════════════════════════════════════════════
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Film production, line production, filmmaking, web series, ad films, documentaries and digital marketing video — the full CineCrafter offering.",
-};
-
 export default function ServicesPage() {
+  const [servicesList, setServicesList] = useState<Service[]>(staticServices);
+  const [projectsList, setProjectsList] = useState<Project[]>(staticProjects);
+
+  useEffect(() => {
+    getServices().then((data) => {
+      setServicesList(data);
+    });
+    getProjects().then((data) => {
+      setProjectsList(data);
+    });
+  }, []);
+
+  const getProjectBySlugLocal = (slug: string) => {
+    return projectsList.find((p) => p.slug === slug);
+  };
+
   return (
     <>
       <PageHeader
@@ -28,9 +42,9 @@ export default function ServicesPage() {
       />
 
       <div className="frame pb-32">
-        {services.map((service, i) => {
+        {servicesList.map((service, i) => {
           const example = service.exampleProjectSlug
-            ? getProjectBySlug(service.exampleProjectSlug)
+            ? getProjectBySlugLocal(service.exampleProjectSlug)
             : undefined;
           const reversed = i % 2 === 1;
 

@@ -26,21 +26,25 @@ export function IntroAnimation() {
 
   useEffect(() => {
     if (reduceMotion) return; // honor reduced motion: no intro at all
-    const seen = sessionStorage.getItem(SESSION_KEY);
-    if (ALWAYS_SHOW || !seen) {
-      setShow(true);
+    if (!ALWAYS_SHOW && sessionStorage.getItem(SESSION_KEY)) return;
+
+    setShow(true);
+    // Lock scroll while the intro plays.
+    document.body.style.overflow = "hidden";
+
+    const t = setTimeout(() => {
+      // Mark as seen only once the intro has actually completed. Setting this
+      // upfront breaks under React Strict Mode's dev double-invoke (the second
+      // pass would see the flag and never schedule the hide timer).
       sessionStorage.setItem(SESSION_KEY, "1");
-      // Lock scroll while the intro plays.
-      document.body.style.overflow = "hidden";
-      const t = setTimeout(() => {
-        setShow(false);
-        document.body.style.overflow = "";
-      }, 1700);
-      return () => {
-        clearTimeout(t);
-        document.body.style.overflow = "";
-      };
-    }
+      setShow(false);
+      document.body.style.overflow = "";
+    }, 1700);
+
+    return () => {
+      clearTimeout(t);
+      document.body.style.overflow = "";
+    };
   }, [reduceMotion]);
 
   return (
