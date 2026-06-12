@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: "export",
   images: {
+    unoptimized: true,
     // Modern formats first to keep payloads small and avoid layout shift.
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

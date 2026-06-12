@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { siteConfig } from "@/site-config";
 import { services as staticServices } from "@/data/services";
 import { easeCine } from "@/lib/motion";
-import { getServices } from "@/lib/db-client";
+import { getServices, db } from "@/lib/db-client";
 import type { Service } from "@/types";
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -56,21 +56,25 @@ export function ContactForm() {
     };
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
+      await addDoc(collection(db, "inquiries"), {
+        name: payload.name,
+        company: payload.company || null,
+        email: payload.email,
+        projectType: payload.projectType,
+        budget: payload.budget || null,
+        referral: payload.referral || null,
+        message: payload.message,
+        createdAt: serverTimestamp(),
       });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || "Something went wrong. Please try again.");
-        setStatus("error");
-        return;
-      }
-      setRevealed(data.directContact ?? null);
+      setRevealed({
+        phone: "+91 8870 059141",
+        whatsapp: "+91 8870 059141",
+        email: "dds.sidharth@gmail.com",
+      });
       setStatus("success");
-    } catch {
-      setError("Network error. Please check your connection and try again.");
+    } catch (err: any) {
+      setError("Failed to send inquiry. Please try again. Error: " + err.message);
       setStatus("error");
     }
   }
