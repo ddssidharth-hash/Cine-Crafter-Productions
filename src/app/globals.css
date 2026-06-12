@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════════
+   THEME TOKENS — single source of truth for the palette.
+   Colors are stored as space-separated RGB channels so Tailwind's
+   `<alpha-value>` syntax works (e.g. text-ink/60).
+
+   TODO: Insert the final, client-approved color palette here. To re-skin
+   the entire site, you only need to edit the values in this :root block.
+   ═══════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Backgrounds — near-black canvas */
+  --color-base: 10 10 10; /* #0A0A0A */
+  --color-base-elevated: 22 22 22; /* #161616 cards/panels */
+  --color-line: 42 42 42; /* #2A2A2A hairline borders */
+
+  /* Text — off-white ink */
+  --color-ink: 245 245 242; /* #F5F5F2 */
+  --color-ink-muted: 168 168 162; /* secondary text */
+  --color-ink-faint: 110 110 106; /* captions / labels */
+
+  /* Accent — muted, desaturated gold (used sparingly). Swap for steel blue
+     here if preferred, e.g. 122 145 168. */
+  --color-accent: 178 150 104; /* #B29668 desaturated gold */
+  --color-accent-soft: 120 102 72;
+
+  /* Fonts are injected by next/font in layout.tsx as --font-display / --font-body. */
+
+  color-scheme: dark;
+}
+
+/* ─── Base element styling ─────────────────────────────────────────────── */
+* {
+  border-color: rgb(var(--color-line));
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--color-base));
+  color: rgb(var(--color-ink));
+  font-family: var(--font-body), system-ui, sans-serif;
+  /* Prevent horizontal scroll from full-bleed motion elements. */
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgb(var(--color-accent) / 0.3);
+  color: rgb(var(--color-ink));
+}
+
+/* Refined, minimal scrollbar (WebKit). */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-base));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-line));
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-ink-faint));
+}
+
+/* ─── Reusable utility layers ──────────────────────────────────────────── */
+@layer components {
+  /* Tiny uppercase eyebrow label used across sections. */
+  .eyebrow {
+    @apply text-xs font-sans uppercase tracking-widest text-ink-faint;
+  }
+
+  /* The understated text/icon link with an animated underline. */
+  .link-underline {
+    @apply relative inline-flex items-center text-ink transition-colors duration-500 ease-cine hover:text-accent;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute left-0 -bottom-1 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-500 ease-cine;
+  }
+  .link-underline:hover::after {
+    @apply scale-x-100;
+  }
+
+  /* Outer page frame — generous gutters, capped width. */
+  .frame {
+    @apply mx-auto w-full max-w-frame px-6 sm:px-10 lg:px-16;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbars on horizontal snap strips while keeping scroll. */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ─── Reduced motion: honor the user's OS preference everywhere ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

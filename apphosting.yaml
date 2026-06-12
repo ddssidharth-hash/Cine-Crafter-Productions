@@ -1,0 +1,26 @@
+# ═══════════════════════════════════════════════════════════════════════
+# Firebase App Hosting configuration.
+# App Hosting connects this GitHub repo, builds the Next.js app (SSR + the
+# /api/contact route) and serves it. See https://firebase.google.com/docs/app-hosting
+#
+# Deploy path:
+#   1. Firebase console → App Hosting → "Get started" → connect the GitHub repo
+#      (ddssidharth-hash/Cine-Crafter-Productions), branch `main`.
+#   2. App Hosting auto-detects Next.js and uses this file for runtime config.
+#
+# The Firebase *web* config is committed in src/lib/firebase.ts (it's public by
+# design). If you later add server secrets (e.g. RESEND_API_KEY), store them in
+# Cloud Secret Manager and reference them here under `env` with `secret:`.
+# ═══════════════════════════════════════════════════════════════════════
+
+runConfig:
+  # Scale to zero when idle to minimise cost for a portfolio site.
+  minInstances: 0
+  maxInstances: 2
+
+# Example for wiring a secret later (uncomment + create the secret first):
+# env:
+#   - variable: RESEND_API_KEY
+#     secret: RESEND_API_KEY
+#     availability:
+#       - RUNTIME
