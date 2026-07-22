@@ -15,9 +15,7 @@ import {
 } from "@/data/about";
 import { getAboutContent } from "@/lib/db-client";
 
-// TODO: replace with a real founder/studio portrait (add to /public).
-const PORTRAIT =
-  "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=75";
+const PORTRAIT = "/sidharth-menon.jpg";
 
 export default function AboutPage() {
   const [stats, setStats] = useState(staticAboutStats);
@@ -94,7 +92,7 @@ export default function AboutPage() {
                 fill
                 loading="lazy"
                 sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-cover [filter:saturate(0.9)]"
+                className="object-cover object-top"
               />
             </div>
           </Reveal>
