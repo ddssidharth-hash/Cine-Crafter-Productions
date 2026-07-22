@@ -38,18 +38,7 @@ export const experimentalProjects: ExperimentalProject[] = [
     cover: typographicCover("KILIMANJARO", "#C45A34"),
     stills: [],
   },
-  {
-    slug: "western-ghats",
-    title: "Stories of the Western Ghats",
-    tag: "Documentary · Solo",
-    excerpt:
-      "Cycling the Western Ghats solo, in search of endemic tribes and their stories.",
-    description:
-      "A solo cycling expedition across the Western Ghats in search of stories from the region's endemic tribes — living among them, documenting their livelihoods and writing about their way of life.",
-    year: 2022,
-    cover: typographicCover("WESTERN GHATS", "#3C6E52"),
-    stills: [],
-  },
+
   {
     slug: "east-africa-maasai",
     title: "Among the Maasai",
