@@ -95,7 +95,12 @@ export async function getProjects(): Promise<Project[]> {
     }
     const list: Project[] = [];
     snapshot.forEach((doc) => {
-      list.push(doc.data() as Project);
+      const data = doc.data() as Project;
+      const staticMatch = staticProjects.find((p) => p.slug === data.slug);
+      if (staticMatch && (!data.cover || data.cover.includes("images.unsplash.com"))) {
+        data.cover = staticMatch.cover;
+      }
+      list.push(data);
     });
     // Sort projects if order exists, otherwise keep as is or sort by year
     return list.sort((a, b) => b.year - a.year);
@@ -114,7 +119,12 @@ export async function getExperimentalProjects(): Promise<ExperimentalProject[]> 
     }
     const list: ExperimentalProject[] = [];
     snapshot.forEach((doc) => {
-      list.push(doc.data() as ExperimentalProject);
+      const data = doc.data() as ExperimentalProject;
+      const staticMatch = staticExperimental.find((p) => p.slug === data.slug);
+      if (staticMatch && (!data.cover || data.cover.includes("images.unsplash.com"))) {
+        data.cover = staticMatch.cover;
+      }
+      list.push(data);
     });
     return list.sort((a, b) => b.year - a.year);
   } catch (error) {

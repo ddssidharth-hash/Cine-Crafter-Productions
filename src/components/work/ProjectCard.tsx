@@ -70,16 +70,26 @@ export function ProjectCard({
       <div
         className={`relative ${aspect} w-full overflow-hidden bg-base-elevated`}
       >
-        <Image
-          src={cover}
-          alt={title}
-          fill
-          loading="lazy"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className={`object-cover transition-[transform,opacity,filter] duration-700 ease-cine group-hover:scale-[1.04] ${
-            previewReady && hovered ? "opacity-0" : "opacity-100"
-          } [filter:saturate(0.92)] group-hover:[filter:saturate(1)]`}
-        />
+        {cover.startsWith("data:image/svg+xml") || cover.endsWith(".svg") ? (
+          <img
+            src={cover}
+            alt={title}
+            className={`h-full w-full object-cover transition-transform duration-700 ease-cine group-hover:scale-[1.04] ${
+              previewReady && hovered ? "opacity-0" : "opacity-100"
+            }`}
+          />
+        ) : (
+          <Image
+            src={cover}
+            alt={title}
+            fill
+            loading="lazy"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className={`object-cover transition-[transform,opacity,filter] duration-700 ease-cine group-hover:scale-[1.04] ${
+              previewReady && hovered ? "opacity-0" : "opacity-100"
+            } [filter:saturate(0.92)] group-hover:[filter:saturate(1)]`}
+          />
+        )}
 
         {/* Lazy hover preview video */}
         {previewUrl && (hovered || previewReady) && (
