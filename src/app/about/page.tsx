@@ -92,7 +92,7 @@ export default function AboutPage() {
                 fill
                 loading="lazy"
                 sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-cover object-top"
+                className="object-cover object-center"
               />
             </div>
           </Reveal>
