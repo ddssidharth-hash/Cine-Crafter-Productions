@@ -26,12 +26,11 @@ function toModalData(p: ExperimentalProject): ProjectModalData {
   };
 }
 
-// Per-tile treatment: alternating column span + vertical offset for rhythm.
+// Per-tile treatment: balanced staggered grid for 3 passion projects.
 const layout = [
   { span: "lg:col-span-7", offset: "lg:mt-0", aspect: "aspect-video" },
-  { span: "lg:col-span-5", offset: "lg:mt-24", aspect: "aspect-[3/4]" },
-  { span: "lg:col-span-5", offset: "lg:-mt-12", aspect: "aspect-[4/5]" },
-  { span: "lg:col-span-7", offset: "lg:mt-16", aspect: "aspect-video" },
+  { span: "lg:col-span-5", offset: "lg:mt-12", aspect: "aspect-[4/5]" },
+  { span: "lg:col-span-12", offset: "lg:mt-8", aspect: "aspect-[21/9]" },
 ];
 
 export function ExperimentalGallery() {
@@ -40,7 +39,7 @@ export function ExperimentalGallery() {
 
   useEffect(() => {
     getExperimentalProjects().then((data) => {
-      setProjectsList(data);
+      setProjectsList(data.filter((p) => p.slug !== "western-ghats"));
     });
   }, []);
 

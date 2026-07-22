@@ -115,21 +115,23 @@ export async function getExperimentalProjects(): Promise<ExperimentalProject[]> 
   try {
     const snapshot = await getDocs(collection(db, "experimental"));
     if (snapshot.empty) {
-      return staticExperimental;
+      return staticExperimental.filter((p) => p.slug !== "western-ghats");
     }
     const list: ExperimentalProject[] = [];
     snapshot.forEach((doc) => {
       const data = doc.data() as ExperimentalProject;
-      const staticMatch = staticExperimental.find((p) => p.slug === data.slug);
-      if (staticMatch && (!data.cover || data.cover.includes("images.unsplash.com"))) {
-        data.cover = staticMatch.cover;
+      if (data.slug !== "western-ghats" && !data.slug.includes("western-ghats")) {
+        const staticMatch = staticExperimental.find((p) => p.slug === data.slug);
+        if (staticMatch && (!data.cover || data.cover.includes("images.unsplash.com"))) {
+          data.cover = staticMatch.cover;
+        }
+        list.push(data);
       }
-      list.push(data);
     });
     return list.sort((a, b) => b.year - a.year);
   } catch (error) {
     console.warn("Firestore experimental fetch failed, using static fallback:", error);
-    return staticExperimental;
+    return staticExperimental.filter((p) => p.slug !== "western-ghats");
   }
 }
 
