@@ -38,7 +38,7 @@ export const founder = {
   role: "Founder · Writer / Director · Creative Director",
   bio: [
     "A storyteller at heart with over twelve years behind the camera and the edit, Sidharth has spent his career turning extensive research into narratives that come to life on screen. He began as an assistant director and, through relentless dedication, grew into a seasoned writer and director — and the founder of CineCrafter Productions.",
-    "His work spans esteemed production houses and networks — Balaji Telefilms, ALT Balaji, MTV, Sun Network, Channel V, Zee Tamil, Banijay Asia and Joy Movie Productions among them — across web series, reality television, advertising and four South Indian films. Today he is Creative Director at the Isha Foundation, where he heads the video department and has made over 250 films carrying Sadhguru's causes to a global audience.",
+    "His work spans esteemed production houses and networks — Balaji Telefilms, ALT Balaji, MTV, Sun Network, Channel V, Zee Tamil, Banijay Asia and Joy Movie Productions among them — across web series, reality television, advertising and four South Indian films. Previously, he was the Creative Director at Thrillophilia, building a video department from ground zero, forming teams and producing content that, in turn, showed tremendous results on the ROI of the company. Before that, he worked as the Creative Director at Isha Foundation, where he headed the video department and made over 250 films carrying Sadhguru's causes to a global audience.",
     "Beyond the studio he is an explorer and intense traveller — cycling the Western Ghats solo in search of endemic tribes, living with the Maasai of East Africa, and summiting Mount Kilimanjaro. His dream lies in documentary filmmaking, with an aspiration to bring stories from around the globe to platforms like National Geographic.",
   ],
 };
@@ -46,7 +46,14 @@ export const founder = {
 // Career timeline — most recent first.
 export const experience = [
   {
-    period: "2022 — Present",
+    period: "2023 — 2024",
+    org: "Thrillophilia",
+    role: "Creative Director",
+    detail:
+      "Built the video department from ground zero, forming teams and producing content that drove tremendous ROI for the company.",
+  },
+  {
+    period: "2022 — 2023",
     org: "Isha Foundation",
     role: "Creative Director — Video Department · Director / Writer",
     detail:
