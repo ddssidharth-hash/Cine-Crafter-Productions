@@ -85,14 +85,14 @@ export default function AboutPage() {
       <section className="frame border-t border-base-line py-24">
         <div className="grid items-start gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-5">
-            <div className="relative aspect-[716/921] w-full overflow-hidden bg-base-elevated">
+            <div className="relative aspect-[1024/877] w-full overflow-hidden">
               <Image
                 src={PORTRAIT}
                 alt={founderInfo.name}
                 fill
                 loading="lazy"
                 sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-contain"
+                className="object-cover"
               />
             </div>
           </Reveal>
