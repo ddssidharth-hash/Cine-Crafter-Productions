@@ -39,7 +39,7 @@ export const siteConfig = {
     // Publicly shown, always — safe to ship to the client.
     general: {
       email: "dds.sidharth@gmail.com",
-      location: "Bangalore, India · Available worldwide",
+      location: "Kochi, India · Available worldwide",
       hours: "Mon–Fri, 10:00–18:00 IST",
     },
   },
